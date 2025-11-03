@@ -21,4 +21,8 @@ export class TaskItem implements OnInit {
     
   }
 
+  onDelete(task: Task) {
+    console.log('Delete clicked', task);
+  }
+
 }
