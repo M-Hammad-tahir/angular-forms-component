@@ -16,13 +16,7 @@ export class TaskService implements OnInit {
     
   }
 getTasks(): Observable<Task[]> {
-  return this.http.get<Task[]>(this.apiUrl)
-    .pipe(
-      catchError(err => {
-        console.error('getTasks failed, returning mock tasks', err);
-        return of(TASKS);
-      })
-    );
+  return this.http.get<Task[]>(this.apiUrl);
 }
 
 deleteTask(task: Task): Observable<Task> {
