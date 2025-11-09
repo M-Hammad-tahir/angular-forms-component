@@ -4,10 +4,11 @@ import { TASKS } from '../../mock-tasks';
 import { Task } from '../../Task';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-task-item',
-  imports: [NgFor, FaIconComponent, NgStyle],
+  imports: [NgFor, FaIconComponent, NgStyle, CommonModule],
   templateUrl: './task-item.html',
   styleUrl: './task-item.css',
 })
