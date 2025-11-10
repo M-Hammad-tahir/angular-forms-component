@@ -29,6 +29,12 @@ export class Tasks implements OnInit {
     });
     console.log('Delete task in tasks component', task.id);
   }
+  
+  toggleReminder(task: Task) {
+    task.reminder = !task.reminder;
+    this.cd.detectChanges();
+    console.log('Toggle task in tasks component', task.reminder);
+  }
 
 }
  
