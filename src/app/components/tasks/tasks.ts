@@ -4,10 +4,11 @@ import { TaskItem } from "../task-item/task-item";
 import { TASKS } from '../../mock-tasks';
 import { Task } from '../../Task';
 import { TaskService } from '../../services/task.service';
+import { AddTaskComponent } from "../add-task-component/add-task-component";
 
 @Component({
   selector: 'app-tasks',
-  imports: [TaskItem, NgFor],
+  imports: [TaskItem, NgFor, AddTaskComponent],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
 })
@@ -32,8 +33,8 @@ export class Tasks implements OnInit {
   
   toggleReminder(task: Task) {
     task.reminder = !task.reminder;
+    this.taskService.updateTaskReminder(task).subscribe();
     this.cd.detectChanges();
-    console.log('Toggle task in tasks component', task.reminder);
   }
 
 }
