@@ -32,6 +32,7 @@ export class Tasks implements OnInit {
   }
   
   toggleReminder(task: Task) {
+    //changing reminder of clicked task and updating on server.
     task.reminder = !task.reminder;
     this.taskService.updateTaskReminder(task).subscribe();
     this.cd.detectChanges();
