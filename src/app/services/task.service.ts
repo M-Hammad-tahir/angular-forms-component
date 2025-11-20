@@ -32,4 +32,10 @@ export class TaskService implements OnInit {
       }),
     });
   }
+
+  addTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.apiUrl, task, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
 }
