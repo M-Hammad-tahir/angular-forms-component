@@ -15,27 +15,31 @@ export class AddTaskComponent {
 
   title: string = 'Adding tasks in this component';
 
-  // bound form fields
-  task: string = '';
-  time: string = '';
+  text: string = '';
+  day: string = '';
   reminder: boolean = false;
-
   @Output() addTask: EventEmitter<Task> = new EventEmitter();
 
   onSubmit() {
-    if (!this.task) {
-      return;
+    if (!this.text){
+      alert('Please add a task!');
     }
-    const newTask: Task = {
-      text: this.task,
-      day: this.time,
-      reminder: this.reminder,
+
+    const newTask = {
+    text: this.text,
+    day: this.day,
+    reminder: this.reminder
     };
+
+    //Emitting task value for accessing in parent
+
     this.addTask.emit(newTask);
-    // reset form
-    this.task = '';
-    this.time = '';
+
+    this.text = '';
+    this.day = '';
     this.reminder = false;
+
   }
 
 }
+
