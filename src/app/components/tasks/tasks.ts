@@ -38,5 +38,14 @@ export class Tasks implements OnInit {
     this.cd.detectChanges();
   }
 
+  onAddTask(task: Task) {
+    console.log('Task from child:', task);
+    this.taskService.addTask(task).subscribe((task) => {
+      this.tasks.push(task);
+    });
+    this.cd.detectChanges();
+     
+  }
+
 }
  

@@ -4,12 +4,19 @@ import { Observable, of, catchError } from 'rxjs';
 import { TASKS } from '../mock-tasks';
 import { Task } from '../Task';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+}
+
 @Injectable({
   providedIn: 'root',
 })
+
 export class TaskService implements OnInit {
   private apiUrl = 'http://localhost:5000/tasks';
-  
+
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -26,16 +33,10 @@ export class TaskService implements OnInit {
 
   updateTaskReminder(task: Task): Observable<Task> {
     const url = `${this.apiUrl}/${task.id}`;
-    return this.http.put<Task>(url, task, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    });
+    return this.http.put<Task>(url, task, httpOptions);
   }
 
   addTask(task: Task): Observable<Task> {
-    return this.http.post<Task>(this.apiUrl, task, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    });
+    return this.http.post<Task>(this.apiUrl, task, httpOptions);
   }
 }
